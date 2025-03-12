@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH-Tube</title>
+    <!-- daisi UI & tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="max-w-screen-xl mx-auto my-5">
+    <header>
+        <nav class="flex justify-between items-center border-b-2 border-gray-200 pb-6">
+            <div class="logo">
+                <img class="w-36" src="./assets/Logo.png" alt="">
+            </div>
+            <div class="sort">
+                <button class="btn bg-gray-300 rounded-md font-bold">Sort by View</button>
+            </div>
+            <div class="blog">
+                <button class="btn bg-[#FF1F3D] text-white rounded-md font-semibold"> Blog</button>
+            </div>
+        </nav>
+    </header>
+    <nav id="category-container" class="flex justify-center items-center gap-5 my-7 ">
+        <div>
+            <button onclick="loadVideos()" class="btn btn-sm text-white bg-[#FF1F3D]">All</button>
+        </div>
+    </nav>
+
+    <section id="video-container" class="w-full grid grid-cols-4 gap-5">
+
+  
+
+    </section>
+
+
+    <script src="./script/index.js"></script>
+</body>
+</html>

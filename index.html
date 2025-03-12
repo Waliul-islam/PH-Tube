@@ -1,49 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PH-Tube</title>
     <!-- daisi UI & tailwind -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        .active{
-            background: #FF1F3D;
-            color: white;
-        }
+      .active {
+        background: #ff1f3d;
+        color: white;
+      }
     </style>
-</head>
-<body class="max-w-screen-xl mx-auto my-5">
+  </head>
+  <body class="max-w-screen-xl mx-auto my-5">
     <header>
-        <nav class="flex justify-between items-center border-b-2 border-gray-200 pb-6">
-            <div class="logo">
-                <img class="w-36" src="./assets/Logo.png" alt="">
-            </div>
-            <div class="sort">
-                <button class="btn bg-gray-300 rounded-md font-bold">Sort by View</button>
-            </div>
-            <div class="blog">
-                <button class="btn bg-[#FF1F3D] text-white rounded-md font-semibold"> Blog</button>
-            </div>
-        </nav>
-    </header>
-    <nav id="category-container" class="flex justify-center items-center gap-5 my-7 ">
-        <div>
-            <button id="btn-all" onclick="loadVideos()" class="btn btn-sm">All</button>
+      <nav
+        class="flex justify-between items-center border-b-2 border-gray-200 pb-6"
+      >
+        <div class="logo">
+          <img class="w-36" src="./assets/Logo.png" alt="" />
         </div>
+        <div class="sort">
+          <button class="btn bg-gray-300 rounded-md font-bold">
+            Sort by View
+          </button>
+        </div>
+        <div class="blog">
+          <button class="btn bg-[#FF1F3D] text-white rounded-md font-semibold">
+            Blog
+          </button>
+        </div>
+      </nav>
+    </header>
+    <nav
+      id="category-container"
+      class="flex justify-center items-center gap-5 my-7"
+    >
+      <div>
+        <button id="btn-all" onclick="loadVideos()" class="btn btn-sm">
+          All
+        </button>
+      </div>
     </nav>
 
     <section id="video-container" class="w-full grid grid-cols-4 gap-5">
-
-        <div class="col-span-full flex flex-col gap-5 justify-center items-center py-20">
-            <img src="./assets/Icon.png" alt="">
-            <h2 class="font-bold text-4xl text-center">Oops!! Sorry, There is no <br> content here</h2>
-        </div>
-
+      <div
+        class="col-span-full flex flex-col gap-5 justify-center items-center py-20"
+      >
+        <img src="./assets/Icon.png" alt="" />
+        <h2 class="font-bold text-4xl text-center">
+          Oops!! Sorry, There is no <br />
+          content here
+        </h2>
+      </div>
     </section>
 
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+    <dialog id="video_details" class="modal">
+      <div class="modal-box">
+        <div id="details-container"></div>
+
+
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
 
     <script src="./script/index.js"></script>
-</body>
+  </body>
 </html>

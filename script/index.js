@@ -1,3 +1,14 @@
+const showLoader = () => {
+  document.getElementById("loader").classList.remove("hidden");
+  document.getElementById("video-container").classList.add("hidden");
+}
+
+const hideLoader = () => {
+  document.getElementById("loader").classList.add("hidden");
+  document.getElementById("video-container").classList.remove("hidden");
+}
+
+
 function removeActiveClass() {
     const activeButtons = document.getElementsByClassName("active");
 
@@ -14,8 +25,9 @@ function loadCategories() {
     .then((data) => displayCategories(data.categories));
 }
 
-function loadVideos() {
-  fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+function loadVideos(searchText = "") {
+  showLoader();
+  fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchText}`)
     .then((response) => response.json())
       .then((data) => {
           removeActiveClass();
@@ -25,6 +37,7 @@ function loadVideos() {
 }
 
 function loadCategoryVideos(id) {
+  showLoader();
     const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
 
     fetch(url)
@@ -89,11 +102,11 @@ const displayVideos = (videos) => {
             <h2 class="font-bold text-4xl text-center">Oops!! Sorry, There is no <br> content here</h2>
         </div>
         `
+      hideLoader();
         return;
     }
 
   videos.forEach((video) => {
-    console.log(video);
     const videoDiv = document.createElement("div");
     videoDiv.innerHTML = `
     
@@ -118,7 +131,7 @@ const displayVideos = (videos) => {
 
               <div class="desc">
                 <h2 class="text-base font-bold"> ${video.title}</h2>
-                <p class="text-gray-400 text-base flex items-center gap-2 mt-1"> ${video.authors[0].profile_name} <img class="w-5 h-5" src="./assets/verified.png" alt=""></p>
+                <p class="text-gray-400 text-base flex items-center gap-2 mt-1"> ${video.authors[0].profile_name} ${video.authors[0].verified == true ? `<img class="w-5 h-5" src="./assets/verified.png", alt=""/>`: ``} </p> 
                 <p class="text-gray-400 text-base "> ${video.others.views} views </p>
               </div>
             </div>
@@ -129,6 +142,12 @@ const displayVideos = (videos) => {
         `;
     videoContainer.append(videoDiv);
   });
+  hideLoader();
 };
+
+document.getElementById("search-input").addEventListener("keyup", (e) => {
+  const input = e.target.value;
+  loadVideos(input);
+})
 
 loadCategories();
